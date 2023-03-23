@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Trout Stop</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
+    <link rel="stylesheet" href="/assets/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="/assets/css/aos.css">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script> -->
+    
+
+  </head>
+  <body>
+
+  <div class="site-wrap">
+    <header class="site-navbar" role="banner">
+      <div class="site-navbar-top">
+        <div class="container">
+          <div class="row align-items-center">
+  
+            <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
+              <form action="" class="site-block-top-search">
+                <span class="icon icon-search2"></span>
+                <input type="text" class="form-control border-0" placeholder="Search">
+              </form>
+            </div>
+  
+            <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
+              <div class="site-logo">
+                <img style="width: 75px;height: 75px";" src="/assets/images/troutstoplogo.png" alt="">
+                <!-- <a href="index.html" class="js-logo-clone">Shoppers</a> -->
+              </div>
+            </div>
+  
+            <div class="col-6 col-md-4 order-3 order-md-3 text-right">
+              <div class="site-top-icons">
+                <ul>
+                  <li><a href="/userprofile"><span class="icon icon-person"></span></a></li>
+                  <li><a href="/wishlist"><span class="icon icon-heart-o"></span></a></li>
+                  <li>
+                    <a href="/cart" class="site-cart">
+                      <span class="icon icon-shopping_cart"></span>
+                      <!-- <span class="count">2</span> -->
+                    </a>
+                  </li> 
+                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
+                </ul>
+              </div> 
+            </div>
+  
+          </div>
+        </div>
+      </div> 
+      <nav class="site-navigation text-right text-md-center" role="navigation">
+        <div class="container">
+          <ul class="site-menu js-clone-nav d-none d-md-block">
+            <!-- <li class="has-children active"> -->
+             <li><a href="/">Home</a></li> 
+              <!-- <ul class="dropdown">
+                <li><a href="#">Menu One</a></li>
+                <li><a href="#">Menu Two</a></li>
+                <li><a href="#">Menu Three</a></li>
+                <li class="has-children">
+                  <a href="#">Sub Menu</a>
+                  <ul class="dropdown">
+                    <li><a href="#">Menu One</a></li>
+                    <li><a href="#">Menu Two</a></li>
+                    <li><a href="#">Menu Three</a></li>
+                  </ul>
+                </li>
+              </ul> -->
+            <!-- </li> -->
+            <li class="has-children">
+              <a href="about.html">About</a>
+              <ul class="dropdown">
+                <li><a href="#">Menu One</a></li>
+                <li><a href="#">Menu Two</a></li>
+                <li><a href="#">Menu Three</a></li>
+              </ul>
+            </li>
+            <li><a href="/shop">Shop</a></li>
+            <!-- <li><a href="#">Catalogue</a></li> -->
+            <!-- <li><a href="/signup">Sign Up</a></li> -->
+            <li> <% if(user) {%> 
+              <a href="/logout">Logout</a></li>
+            <% }else{ %>
+                <a href="/login">Login</a></li>
+              <%}%> </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <a href="cart.html">Cart</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Checkout</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        
+       
+
+      <form action="/saveaddress" method="post" >
+
+        <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Add address</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <label for="c_fname" class="text-black">First Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="c_fname" name="firstname">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="c_lname" name="lastname">
+                  </div>
+                </div>
+      
+      
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <label for="c_address" class="text-black">Address <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="c_address" name="housename" placeholder="House name">
+                  </div>
+                </div>
+      
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Locality (optional)" name="locality">
+                </div>
+      
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Landmark (optional)" name="landmark">
+                </div>
+      
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <label for="c_state_country" class="text-black">City / Town <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="c_state_country" name="city">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="c_postal_zip" class="text-black">Pincode <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="c_postal_zip" name="pincode">
+                  </div>
+                </div>
+      
+                <div class="form-group row mb-5">
+                  <div class="col-md-6">
+                    <label for="c_email_address" class="text-black">State <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="c_email_address" name="state">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="c_phone" name="phonenumber" placeholder="Phone Number">
+                  </div>
+                </div>
+      
+                
+      
+      
+      
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </form>  
+        
+
+
+<form action="/placeorder" method="post" id="myForm">
+
+        <div class="row">
+          <div class="col-md-6 mb-5 mb-md-0">
+            <h2 class="h3 mb-3 text-black">Billing Details</h2>
+            <div class="p-3 p-lg-5 border">
+              <!-- <div class="form-group">
+                <label for="c_country" class="text-black">Country <span class="text-danger">*</span></label>
+                <select id="c_country" class="form-control">
+                  <option value="1">Select a country</option>    
+                  <option value="2">bangladesh</option>    
+                  <option value="3">Algeria</option>    
+                  <option value="4">Afghanistan</option>    
+                  <option value="5">Ghana</option>    
+                  <option value="6">Albania</option>    
+                  <option value="7">Bahrain</option>    
+                  <option value="8">Colombia</option>    
+                  <option value="9">Dominican Republic</option>    
+                </select>
+              </div> -->
+              <!-- <div class="form-group row">
+                <div class="col-md-6">
+                  <label for="c_fname" class="text-black">First Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_fname" name="fname">
+                </div>
+                <div class="col-md-6">
+                  <label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_lname" name="lname">
+                </div>
+              </div> -->
+
+              
+              <% for( let x of address){ %>
+              <div class="form-group row text-black" >
+                <div class="col-md-12">
+                  <input class="form-check-input" type="radio" name="selected" id="addressid" value="<%= x._id%>"  >  
+                  <!-- onclick="idvalue(value)" -->
+                  <label class="form-check-label" for="exampleRadios">
+                  <span><%= x.firstname%> <%=x.lastname%></span>
+                  <br>
+                  <span>
+                  <%=x.housename%>, 
+                  <%=x.locality%>,<%=x.landmark%>,  
+                  <%=x.city%>,  
+                  <%=x.state%> - <%=x.pincode%>  
+                  PH:<%=x.mobile%>
+                  </span>
+                  </label>
+
+                  
+
+                
+                  <!-- <label for="c_companyname" class="text-black">Company Name </label> -->
+                  <!-- <input type="text" class="form-control" id="c_companyname" name="c_companyname"> -->
+                </div>
+              </div>
+                <% } %>
+                <!-- <form action="/ordersuccess" method="get"> -->
+                <!-- <input type="text" id="id" name="addressid"> -->
+                
+              <!-- <div class="form-group row">
+                <div class="col-md-12">
+                  <label for="c_address" class="text-black">Address <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_address" name="c_address" placeholder="House name">
+                </div>
+              </div> -->
+
+              <!-- <div class="form-group">
+                <input type="text" class="form-control" placeholder="Locality (optional)">
+              </div>
+
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Landmark (optional)">
+              </div> -->
+
+              <!-- <div class="form-group row">
+                <div class="col-md-6">
+                  <label for="c_state_country" class="text-black">City / Town <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_state_country" name="c_state_country">
+                </div>
+                <div class="col-md-6">
+                  <label for="c_postal_zip" class="text-black">Pincode <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
+                </div>
+              </div> -->
+
+              <!-- <div class="form-group row mb-5">
+                <div class="col-md-6">
+                  <label for="c_email_address" class="text-black">State <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_email_address" name="c_email_address">
+                </div>
+                <div class="col-md-6">
+                  <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="Phone Number">
+                </div>
+              </div> -->
+
+
+              <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
+                  Launch demo modal
+              </button> -->
+
+              <a type="button" data-toggle="modal"href="#exampleModalScrollable">+ Add new address</a>
+
+             
+
+              <!-- <div class="form-group">
+                <label for="c_order_notes" class="text-black">Order Notes</label>
+                <textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5" class="form-control" placeholder="Write your notes here..."></textarea>
+              </div> -->
+
+            </div>
+          </div>
+          <div class="col-md-6">
+          
+
+          <form action="/applycoupon" method="post">  
+            <div class="row mb-5">
+              <div class="col-md-12">
+                <h2 class="h3 mb-3 text-black">Coupon Code</h2>
+                <div class="p-3 p-lg-5 border">
+                  
+                  <label for="c_code" class="text-black mb-3">Enter your coupon code if you have one</label>
+                  <div class="input-group w-75">
+                    <input type="text" class="form-control" name="couponname" id="couponcode" placeholder="Coupon Code" aria-label="Coupon Code" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary btn-sm" type="button" id="button-addon2" onclick=apply()>Apply</button>
+                    </div>
+                  </div>
+                  <a type="button" data-toggle="modal"href="#exampleModalScrollable1">Show coupons</a>
+                  <p id="message"></p>
+
+                </div>
+              </div>
+            </div>
+          </form> 
+            
+            <div class="row mb-5">
+              <div class="col-md-12">
+                <h2 class="h3 mb-3 text-black">Your Order</h2>
+                <div class="p-3 p-lg-5 border">
+                  <table class="table site-block-order-table mb-5">
+                    <thead>
+                      <th>Product</th>
+                      <th>Total</th>
+                    </thead>
+                    <tbody>
+                      <% if(id) { %>
+                        <% for(let key of cartProducts.item){ %>
+                      <tr>
+                        <td><%= key.productId.name %><strong class="mx-2">x</strong> <%=key.qty%></td>
+                        <td>₹.<%= key.productId.price * key.qty %></td>
+                      </tr>
+                       <% } %>
+                      <% }else{ %>
+                        <h4>Not Signed in. <br> Sign in now!!! </h4>
+                        <a href="/login" class="btn btn-primary ml-2">login</a>
+          
+                        <% } %>
+                    
+                      <tr>
+                        <td class="text-black font-weight-bold"><strong>Discount</strong></td>
+                        <td class="text-black font-weight-bold"><strong id="discount"></strong></td>
+                      </tr>
+                      <tr>
+                        <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
+                        <td class="text-black font-weight-bold">₹<strong id="totalprice"><%= cartProducts.totalPrice %></strong></td>
+                        <input type="hidden" id="orderprice" value="<%= cartProducts.totalPrice %>">
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+
+
+                  <!-- <div class="border p-3 mb-3">
+                    <h3 class="h6 mb-0 "><a class="d-block" data-toggle="collapse" href="#collapsecheque" role="button" aria-expanded="false" aria-controls="collapsecheque">Cash on Delivery</a></h3>
+
+                    <div class="collapse" id="collapsecheque">
+                      <div class="py-2">
+                        <p class="mb-0">Pay in cash when the product reaches your doorstep</p>
+                      </div>
+                    </div>
+                  </div> -->
+
+                  <div class="border p-3 mb-3 ">
+                    
+                    <input class="form-check-input radios" type="radio" name="payment" id="exampleRadios1" value="COD" onclick="sanky('COD')">
+                       <label class="form-check-label" for="exampleRadios1"> 
+                        <a class="d-block" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapsecheque" style="font-weight: bold;">Cash on Delivery(COD)</a>
+                       </label>
+                    <div class="collapse" id="collapse1">
+                      <div class="py-2">
+                        <p class="mb-0">Pay in cash when the product reaches your doorstep</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="border p-3 mb-3 ">
+                    
+                    <input class="form-check-input radios" type="radio" name="payment" id="exampleRadios1" value="UPI" onclick="sanky('UPI'),createOrder()">
+                       <label class="form-check-label" for="exampleRadios2"> 
+                        <a class="d-block" data-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapsecheque" style="font-weight: bold;">UPI</a>
+                       </label>
+                    <div class="collapse" id="collapse2">
+                      <div class="py-2">
+                        <p class="mb-0">Pay in cash when the product reaches your doorstep</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="border p-3 mb-3 ">
+                    
+                    <input class="form-check-input radios" type="radio" name="payment" id="exampleRadios1" value="CARD" onclick="sanky('CARD'),createOrder()">
+                       <label class="form-check-label" for="exampleRadios3"> 
+                        <a class="d-block" data-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapsecheque" style="font-weight: bold;">Credit/Debit card</a>
+                       </label>
+                    <div class="collapse" id="collapse3">
+                      <div class="py-2">
+                        <p class="mb-0">Pay in cash when the product reaches your doorstep</p>
+                      </div>
+                    </div>
+                  </div>
+
+
+                   <!--  <div class="border p-3 mb-3">
+                    <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">Direct Bank Transfer</a></h3>
+                  
+                    <div class="collapse" id="collapsebank">
+                      <div class="py-2">
+                        <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                      </div>
+                    </div>
+                  </div>  -->
+
+
+                  <!-- <div class="border p-3 mb-5">
+                    <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">Paypal</a></h3>
+
+                    <div class="collapse" id="collapsepaypal">
+                      <div class="py-2">
+                        <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won't be shipped until the funds have cleared in our account.</p>
+                      </div>
+                    </div>
+                  </div>  -->
+
+                  
+
+                  <div class="form-group">
+                    <!-- <button class="btn btn-primary btn-lg py-3 btn-block" type="submit" ><a href="/ordersuccess" class="button" type="submit">Place Order</a></button> -->
+                    <!-- <button id="rzp-button1"class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='ordersucccess'">Place Order</button> -->
+                    <button type="submit" id="btn-cod" class="btn btn-primary btn-lg py-3 btn-block placeorder" >Place Order</button>
+                    <button type="submit" id="rzp-button1" class="btn btn-primary btn-lg py-3 btn-block placeorder"  hidden>Place Order</button>
+                    
+
+
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+
+    <footer class="site-footer border-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="row">
+              <div class="col-md-12">
+                <h3 class="footer-heading mb-4">Navigations</h3>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <ul class="list-unstyled">
+                  <li><a href="#">Sell online</a></li>
+                  <li><a href="#">Features</a></li>
+                  <li><a href="#">Shopping cart</a></li>
+                  <li><a href="#">Store builder</a></li>
+                </ul>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <ul class="list-unstyled">
+                  <li><a href="#">Mobile commerce</a></li>
+                  <li><a href="#">Dropshipping</a></li>
+                  <li><a href="#">Website development</a></li>
+                </ul>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <ul class="list-unstyled">
+                  <li><a href="#">Point of sale</a></li>
+                  <li><a href="#">Hardware</a></li>
+                  <li><a href="#">Software</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+            <h3 class="footer-heading mb-4">Promo</h3>
+            <a href="#" class="block-6">
+              <img src="images/hero_1.jpg" alt="Image placeholder" class="img-fluid rounded mb-4">
+              <h3 class="font-weight-light  mb-0">Finding Your Perfect Shoes</h3>
+              <p>Promo from  nuary 15 &mdash; 25, 2019</p>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="block-5 mb-5">
+              <h3 class="footer-heading mb-4">Contact Info</h3>
+              <ul class="list-unstyled">
+                <li class="address">203 Fake St. Mountain View, San Francisco, California, USA</li>
+                <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
+                <li class="email">emailaddress@domain.com</li>
+              </ul>
+            </div>
+
+            <div class="block-7">
+              <form action="#" method="post">
+                <label for="email_subscribe" class="footer-heading">Subscribe</label>
+                <div class="form-group">
+                  <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email">
+                  <input type="submit" class="btn btn-sm btn-primary" value="Send">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+<!-- //couponmodal -->
+  <!-- <form action="" method="post"> -->
+
+    <div class="modal fade" id="exampleModalScrollable1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalScrollableTitle">Coupons</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <input type="hidden" id="total" value="<%=coupon.length %>">
+          <% for(i=0;i<coupon.length;i++){ %>
+            <div class="form-group row">
+              <div class="col-md-12">
+                <span style="color: crimson;font-size:x-large;"><strong id="<%=coupon[i]._id%>"><%= coupon[i].name %></strong></span>
+                <button id="copy-btn" style="border: none;" onclick="copyText('<%=coupon[i]._id%>')"><i class="fa-regular fa-copy"></i></button>
+                <h6><%= coupon[i].description %></h6>
+                <h6>Min cart value-<%= coupon[i].min_value%> </h6>
+                <h6 id="<%=i%>exp"></h6>
+                <input type="hidden" id="date<%-i%>" value="<%=coupon[i].expiry_date %>">
+
+                <!-- <label for="c_fname" class="text-black">Coupon Name <span class="text-danger">*</span></label> -->
+                <!-- <input type="text" class="form-control"  name="couponname"> -->
+              </div>
+
+              
+
+            
+          </div>
+          <hr>
+          <% } %>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div> 
+   </div>
+  <!-- </form>   -->
+
+
+  <script>
+
+   setTimeout(()=>{
+  const len = document.getElementById('total').value
+  console.log(len);
+  for(i=0;i<len;i++){
+                     const dt = document.getElementById('date'+i).value
+                     console.log('date'+i);
+                      console.log(dt);
+                  const date = new Date(dt);
+                  const options = {   year: 'numeric', 
+                                      month: 'short', 
+                                      day: 'numeric', 
+                                      hour: 'numeric', 
+                                      minute: 'numeric', 
+                                      // second: 'numeric', 
+                                    };
+                  const formattedDate = date.toLocaleString('en-US', options);
+                  document.getElementById(i+'exp').innerHTML = `Expires on ${formattedDate}`
+                 console.log(formattedDate);
+                }
+              },500)
+
+    function copyText(id) {
+    const textToCopy = document.getElementById(id).innerHTML;
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      // alert('Text copied successfully!');
+      Swal.fire({
+        icon: 'success',
+        title: 'Coupon copied successfully!',
+        showConfirmButton: false,
+        timer: 800
+      });
+      
+    }, () => {
+      // alert('Failed to copy text');
+      Swal.fire({
+        icon: 'error',
+        title: 'Failed to copy',
+        showConfirmButton: false,
+        timer: 800
+    });
+    
+  });
+};
+
+</script>
+
+
+<!-- <script>
+   function apply(){
+  const coupon = document.getElementById('couponcode').value
+  console.log(coupon);
+  $.ajax({
+                url: '/applycoupon',
+                type: 'POST',
+                data: { coupon: coupon },
+
+                success: function (data) {
+                    console.log(data);
+                    document.getElementById('totalprice').innerHTML = data.totalPrice
+                    document.getElementById('discount').innerHTML = data.discount
+                   
+                    document.getElementById('message').innerHTML = data.message
+                    if (data.message === 'Coupon applied successfully') {
+    document.getElementById('message').style.color = 'green';
+  } else {
+    document.getElementById('message').style.color = 'red';
+  }
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+          }
+
+
+</script> -->
+
+
+
+
+
+
+<script>
+
+ function sanky(value){   
+  // console.log(123);
+  // console.log(value);
+
+  const button = document.getElementsByClassName('placeorder');
+    // Set the button ID based on the selected value
+
+    if (value === 'UPI') {
+      document.getElementById('btn-cod').setAttribute("hidden","")
+      document.getElementById('rzp-button1').removeAttribute("hidden","")
+
+      // console.log(button);
+    }
+    }
+</script>
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+<script>
+  var priceAfterCoupon
+  function apply(){
+ const coupon = document.getElementById('couponcode').value
+ console.log(coupon);
+ $.ajax({
+               url: '/applycoupon',
+               type: 'POST',
+               data: { coupon: coupon },
+
+               success: function (data) {
+                   console.log(data);
+                   document.getElementById('totalprice').innerHTML = data.totalPrice
+                   document.getElementById('discount').innerHTML = data.discount
+                   document.getElementById('orderprice').value = data.totalPrice
+                   priceAfterCoupon = data.totalPrice*100
+                   createOrder()
+                   document.getElementById('message').innerHTML = data.message
+                   if (data.message === 'Coupon applied successfully') {
+   document.getElementById('message').style.color = 'green';
+ } else {
+   document.getElementById('message').style.color = 'red';
+ }
+
+               },
+               error: function (jqXHR, textStatus, errorThrown) {
+                   console.log(textStatus, errorThrown);
+               }
+           });
+         }
+
+
+
+  var amountinPaise 
+  //  setTimeout(()=>{
+    // var amountinPaise = "<%=cartProducts.totalPrice %>"*100
+    // if(amountinPaise==undefined){
+    // amountinPaise = document.getElementById('totalprice').innerHTML*100
+    // }
+    // console.log(typeof(amountinPaise));
+    // console.log(amountinPaise);
+
+// $(document).ready(function(){
+  function createOrder(){
+    
+    amountinPaise = document.getElementById('orderprice').value*100
+
+    console.log(typeof(amountinPaise));
+    console.log(amountinPaise);
+  var orderId 
+    var settings = {
+  "url": "/create/orderId",
+  "method": "POST",
+  "timeout": 0,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "data": JSON.stringify({
+    "amount": amountinPaise
+  }),
+};
+
+//creates new orderId everytime
+$.ajax(settings).done( function (response) {
+
+  orderId=response.orderId;
+  console.log(orderId);
+  // $("button").show();
+});
+// });
+  //  },500)
+
+// document.getElementById('rzp-button1').onclick = function(e){
+  document.getElementById("rzp-button1").addEventListener("click", function (e) {
+  e.preventDefault();
+  var form = document.getElementById("myForm");
+  // Call the submit() method on the form
+  form.submit();
+
+  // console.log(orderId);
+
+  console.log(amountinPaise);
+   var options = {
+    "key": "<%=keyid%>", // Enter the Key ID generated from the Dashboard
+    "amount": amountinPaise, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "Trout Stop",
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id);
+        // alert(response.razorpay_signature)
+        console.log(response);
+        console.log(response.razorpay_payment_id);
+    // },
+        // $.ajax({
+        //        url: "/ordersuccess",
+        //        type: "POST",
+        //        contentType: "application/json", // Add this line
+        //        dataType: "json", // Add this line
+        //        data: JSON.stringify({
+        //           razorpayPaymentId: response.razorpay_payment_id,
+        //           razorpayOrderId: response.razorpay_order_id,
+        //           razorpaySignature: response.razorpay_signature
+        //        }),
+        //        success: function(data) {
+        //           // Redirect to order confirmation page
+                  window.location.href = "/ordersuccess";
+            //       console.log(data);
+            //    },
+            //    error: function(jqXHR, textStatus, errorThrown) {
+            //       // Display error message
+            //       alert("An error occurred while saving the order: " + errorThrown);
+            //    }
+            // });
+// creates new orderId everytime
+// $.ajax(settings).done(function (response) {
+
+// alert(JSON.stringify(response));
+// });
+  },
+  "prefill": {
+        "name": "<%=user.firstname%> <%=user.lastname%>",
+        "email": "<%=user.email%>",
+        "contact": "<%=user.phonenumber%>"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+
+"theme": {
+        "color": "#3399cc"
+    }
+  };
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+rzp1.open();
+    // e.preventDefault();
+})
+// });
+  }
+// },500)
+
+
+</script> 
+
+
+ 
+
+
+
+
+
+ 
+<%- include('../layouts/footer.ejs')%>

@@ -1,0 +1,615 @@
+<%- include ('../layouts/header.ejs') %>
+  <style>
+    /* @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); */
+    /* :root{--font1: 'Heebo', sans-serif;--font2: 'Fira Sans Extra Condensed', sans-serif;--font3: 'Roboto', sans-serif} */
+    body{
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)}h2{font-weight: 900}
+    .container-fluid{max-width: 1200px}
+    .card{background: #fff;box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);border: 0;border-radius: 1rem}
+    .card-img, .card-img-top{border-top-left-radius: calc(1rem - 1px);border-top-right-radius: calc(1rem - 1px)}.card h5{overflow: hidden;height: 56px;font-weight: 900;font-size: 1rem}
+    .card-img-top{width: 100%;max-height: 180px;object-fit: contain;padding: 30px}.card h2{font-size: 1rem}.card:hover{transform: scale(1.05);box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)}.label-top{position: absolute;background-color: #8bc34a;color: #fff;top: 8px;right: 8px;padding: 5px 10px 5px 10px;font-size: .7rem;font-weight: 600;border-radius: 3px;text-transform: uppercase}.top-right{position: absolute;top: 24px;left: 24px;width: 90px;height: 90px;border-radius: 50%;font-size: 1rem;font-weight: 900;background: #ff5722;line-height: 90px;text-align: center;color: white}.top-right span{display: inline-block;vertical-align: middle}@media (max-width: 768px){.card-img-top{max-height: 250px}}.over-bg{background: rgba(53, 53, 53, 0.85);box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);backdrop-filter: blur(0.0px);-webkit-backdrop-filter: blur(0.0px);border-radius: 10px}.btn{font-size: 1rem;font-weight: 500;text-transform: uppercase;padding: 5px 50px 5px 50px}.box .btn{font-size: 1.5rem}@media (max-width: 1025px){.btn{padding: 5px 40px 5px 40px}}@media (max-width: 250px){.btn{padding: 5px 30px 5px 30px}}.btn-warning{background: none #f7810a;color: #ffffff;fill: #ffffff;border: none;text-decoration: none;outline: 0;box-shadow: -1px 6px 19px rgba(247, 129, 10, 0.25);border-radius: 100px}.btn-warning:hover{background: none #ff962b;color: #ffffff;box-shadow: -1px 6px 13px rgba(255, 150, 43, 0.35)}.bg-success{font-size: 1rem;background-color: #f7810a !important}.bg-danger{font-size: 1rem}.price-hp{font-size: 1rem;font-weight: 600;color: darkgray}.amz-hp{font-size: .7rem;font-weight: 600;color: darkgray}.fa-question-circle:before{color: darkgray}.fa-plus:before{color: darkgray}.box{border-radius: 1rem;background: #fff;box-shadow: 0 6px 10px rgb(0 0 0 / 8%), 0 0 6px rgb(0 0 0 / 5%);transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12)}.box-img{max-width: 300px}.thumb-sec{max-width: 300px}@media (max-width: 576px){.box-img{max-width: 200px}.thumb-sec{max-width: 200px}}.inner-gallery{width: 60px;height: 60px;border: 1px solid #ddd;border-radius: 3px;margin: 1px;display: inline-block;overflow: hidden;-o-object-fit: cover;object-fit: cover}@media (max-width: 370px){.box .btn{padding: 5px 40px 5px 40px;font-size: 1rem}}.disclaimer{font-size: .9rem;color: darkgray}.related h3{font-weight: 900}footer{background: #f7f6f7;height: 80px;color: #fff}</style>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <style>
+  .my-popup-class{
+    z-index: 9999;
+    
+  }
+  /* .wishlist-icon {
+  color: red;
+  font-size: 24px;
+} */
+.wishlist-icon.filled i {
+  color: red;
+}
+</style>
+  <div class="site-wrap">
+    <!-- <header class="site-navbar" role="banner">
+      <div class="site-navbar-top">
+        <div class="container">
+          <div class="row align-items-center">
+
+            <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon
+              text-left">
+              <form action="" class="site-block-top-search">
+                <span class="icon icon-search2"></span>
+                <input type="text" class="form-control border-0"
+                  placeholder="Search">
+              </form>
+            </div>
+
+            <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2
+              text-center">
+              <div class="site-logo">
+                <img style="width: 75px;height: 75px";"
+                  src="/assets/images/troutstoplogo.png" alt="">
+
+              </div>
+            </div>
+
+            <div class="col-6 col-md-4 order-3 order-md-3 text-right">
+              <div class="site-top-icons">
+                <ul>
+                  <li><a href="#"><span class="icon icon-person"></span></a></li>
+                  <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
+                  <li>
+                    <a href="/cart" class="site-cart">
+                      <span class="icon icon-shopping_cart"></span>
+
+                    </a>
+                  </li>
+                  <li class="d-inline-block d-md-none ml-md-0"><a href="#"
+                      class="site-menu-toggle js-menu-toggle"><span
+                        class="icon-menu"></span></a></li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <nav class="site-navigation text-right text-md-center" role="navigation">
+        <div class="container">
+          <ul class="site-menu js-clone-nav d-none d-md-block">
+            <li><a href="/">Home</a></li>
+            <li class="has-children">
+              <a href="about.html">About</a>
+              <ul class="dropdown">
+                <li><a href="#">Menu One</a></li>
+                <li><a href="#">Menu Two</a></li>
+                <li><a href="#">Menu Three</a></li>
+              </ul>
+            </li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="#">Catalogue</a></li>
+
+          </ul>
+        </div>
+      </nav>
+    </header> -->
+    <header class="site-navbar" role="banner">
+      <div class="site-navbar-top">
+        <div class="container">
+          <div class="row align-items-center">
+
+            <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon
+              text-left">
+              <form action="" class="site-block-top-search">
+                <span class="icon icon-search2"></span>
+                <input type="text" class="form-control border-0"
+                  placeholder="Search">
+              </form>
+            </div>
+
+            <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2
+              text-center">
+              <div class="site-logo">
+                <img style="width: 75px;height: 75px";"
+                  src="/assets/images/troutstoplogo.png" alt="">
+                <!-- <a href="index.html" class="js-logo-clone">Shoppers</a> -->
+              </div>
+            </div>
+
+            <div class="col-6 col-md-4 order-3 order-md-3 text-right">
+              <div class="site-top-icons">
+                <ul>
+                  <li><a href="/userprofile"><span class="icon icon-person"></span></a></li>
+                  <li><a href="/wishlist"><span class="icon icon-heart-o"></span></a></li>
+                  <li>
+                    <a href="/cart" class="site-cart">
+                      <span class="icon icon-shopping_cart"></span>
+                      <!-- <span class="count">2</span> -->
+                    </a>
+                  </li>
+                  <li class="d-inline-block d-md-none ml-md-0"><a href="#"
+                      class="site-menu-toggle js-menu-toggle"><span
+                        class="icon-menu"></span></a></li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <nav class="site-navigation text-right text-md-center" role="navigation">
+        <div class="container">
+          <ul class="site-menu js-clone-nav d-none d-md-block">
+            <!-- <li class="has-children active"> -->
+            <li><a href="/">Home</a></li>
+            <!-- <ul class="dropdown">
+                <li><a href="#">Menu One</a></li>
+                <li><a href="#">Menu Two</a></li>
+                <li><a href="#">Menu Three</a></li>
+                <li class="has-children">
+                  <a href="#">Sub Menu</a>
+                  <ul class="dropdown">
+                    <li><a href="#">Menu One</a></li>
+                    <li><a href="#">Menu Two</a></li>
+                    <li><a href="#">Menu Three</a></li>
+                  </ul>
+                </li>
+              </ul> -->
+            <!-- </li> -->
+            <li class="has-children">
+              <a href="about.html">About</a>
+              <ul class="dropdown">
+                <li><a href="#">Menu One</a></li>
+                <li><a href="#">Menu Two</a></li>
+                <li><a href="#">Menu Three</a></li>
+              </ul>
+            </li>
+            <li><a href="/shop">Shop</a></li>
+            <!-- <li><a href="#">Catalogue</a></li> -->
+            <!-- <li><a href="/signup">Sign Up</a></li> -->
+            <li> <% if(user) {%>
+                <a href="/logout">Logout</a></li>
+              <% }else{ %>
+                <a href="/login">Login</a></li>
+              <%}%> </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <div class="bg-light py-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span
+                class="mx-2 mb-0">/</span> <strong class="text-black">Shop</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-section">
+        <div class="container">
+
+          <div class="row mb-5">
+            <div class="col-md-9 order-2">
+
+              <!-- <div class="row"> -->
+              <!-- <div class="col-md-12 mb-5"> -->
+              <!-- <div class="float-md-left mb-4"><h2 class="text-black h5">Shop
+                    All</h2></div> -->
+              <!-- <div class="d-flex"> -->
+              <!-- <div class="dropdown mr-1 ml-md-auto">
+                    <button type="button" class="btn btn-secondary btn-sm
+                      dropdown-toggle" id="dropdownMenuOffset"
+                      data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false">
+                      Latest
+                    </button>
+                    <div class="dropdown-menu"
+                      aria-labelledby="dropdownMenuOffset">
+                      <a class="dropdown-item" href="#">Reels</a>
+                      <a class="dropdown-item" href="#">Rods</a>
+                      <a class="dropdown-item" href="#">Lines</a>
+                    </div>
+                  </div> -->
+              <!-- <div class="btn-group">
+                    <button type="button" class="btn btn-secondary btn-sm
+                      dropdown-toggle" id="dropdownMenuReference"
+                      data-toggle="dropdown">Reference</button>
+                    <div class="dropdown-menu"
+                      aria-labelledby="dropdownMenuReference">
+                      <a class="dropdown-item" href="#">Relevance</a>
+                      <a class="dropdown-item" href="#">Name, A to Z</a>
+                      <a class="dropdown-item" href="#">Name, Z to A</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Price, low to high</a>
+                      <a class="dropdown-item" href="#">Price, high to low</a>
+                    </div>
+                  </div> -->
+              <!-- </div> -->
+              <!-- </div> -->
+              <!-- </div> -->
+
+
+              <div class="row mb-5" id="filtered">
+                <% for(i=0;i<product.length;i++){ %>
+                  <div class="col-sm-6 col-lg-4 mb-4"> <div class="card h-100 shadow-sm">
+                      <img
+                        src="/uploads/<%=product[i].images[0]%>"class="card-img-top" alt="...">
+                        <div class="card-body"> 
+                          <div class="clearfix mb-3"> 
+                          <a href="/shop-single?id=<%=product[i]._id%>"><h5><%=product[i].name%></h5></a>
+                        </div> 
+                          <span class="text-black">₹<%=product[i].price%></span>
+                         
+                            <div class="d-grid gap-2 my-4 " style="display: flex;justify-content:space-between ;align-items: center;">
+                              <!-- <a href="/shop-single?id=<%=product[i]._id%>" class="btn btn-warning" style="z-index: 1">Add to Cart</a>  -->
+                              <a href="#" class="btn btn-primary btn-sm style"style="z-index: 1;">Buy Now</a>
+                              <!-- <i class="fa-regular fa-heart" style="width:1.5px" onclick="wishlist('<%=product[i]._id%>')"></i> -->
+                              <span class="wishlist-icon" style="font-size: 1.5em;" ><i class="fa-regular fa-heart" onclick="wishlist('<%=product[i]._id%>')" ></i></span>
+                            </div>
+
+                        </div>
+                        </div>
+                  </div>
+
+                      <% } %>
+
+                      </div>
+
+                      <div class="row" data-aos="fade-up">
+                        <div class="col-md-12 text-center">
+                          <div class="site-block-27">
+                            <ul>
+                              <li><a href="#">&lt;</a></li>
+                              <li class="active"><span>1</span></li>
+                              <li><a href="#">2</a></li>
+                              <li><a href="#">3</a></li>
+                              <li><a href="#">4</a></li>
+                              <li><a href="#">5</a></li>
+                              <li><a href="#">&gt;</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3 order-1 mb-5 mb-md-0">
+                      <!-- <div class="border p-4 rounded mb-4">
+                  <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-1"><a href="#" class="d-flex"><span>Reels</span>
+                        <span class="text-black ml-auto">(2,220)</span></a></li>
+                    <li class="mb-1"><a href="#" class="d-flex"><span>Rods</span>
+                        <span class="text-black ml-auto">(2,550)</span></a></li>
+                    <li class="mb-1"><a href="#" class="d-flex"><span>Lines</span>
+                        <span class="text-black ml-auto">(2,124)</span></a></li>
+                  </ul>
+                </div> -->
+                      <div class="border p-4 rounded mb-4">
+                        <!-- <div class="mb-4">
+                    <h3 class="mb-3 h6 text-uppercase text-black d-block">Filter
+                      by Price</h3>
+                    <div id="slider-range" class="border-primary"></div>
+                    <input type="text" name="text" id="amount"
+                      class="form-control border-0 pl-0 bg-white" disabled="" />
+                  </div> -->
+                        <div class="mb-4">
+                          <h3 class="mb-3 h6 text-uppercase text-black d-block">Category</h3>
+                          <% if(category){ %>
+                            <% for (let key of category) { %>
+                              <label for="s_sm" class="d-flex">
+                                <input type="checkbox" id="s_sm" class="mr-2
+                                  mt-1" value="<%=key._id%>" name="category"
+                                id="category" onclick="filter()"><span
+                                  class="text-black"><%=key.name%></span>
+                                </label>
+                                <% } %>
+                                  <% } %>
+                                    <!-- <label for="s_md" class="d-flex">
+                      <input type="checkbox" id="s_md" class="mr-2 mt-1"> <span
+                        class="text-black">Medium (1,282)</span>
+                    </label>
+                    <label for="s_lg" class="d-flex">
+                      <input type="checkbox" id="s_lg" class="mr-2 mt-1"> <span
+                        class="text-black">Large (1,392)</span>
+                    </label> -->
+                                  </div>
+
+                                  <div class="mb-4">
+                                    <h3 class="mb-3 h6 text-uppercase text-black
+                                      d-block">Price</h3>
+                                    <label for="s_sm" class="d-flex">
+                                      <input type="radio" id="s_sm" class="mr-2
+                                        mt-1" name="filterprice" value="low"
+                                        onclick="filter()"> <span
+                                        class="text-black">Low to high</span>
+                                    </label>
+                                    <label for="s_md" class="d-flex">
+                                      <input type="radio" id="s_md" class="mr-2
+                                        mt-1" name="filterprice" value="high"
+                                        onclick="filter()"> <span
+                                        class="text-black">High to low</span>
+                                    </label>
+                                    <!-- <label for="s_lg" class="d-flex">
+                      <input type="checkbox" id="s_lg" class="mr-2 mt-1"> <span
+                        class="text-black">Large (1,392)</span>
+                    </label> -->
+                                  </div>
+
+                                  <!-- <div class="mb-4">
+                    <h3 class="mb-3 h6 text-uppercase text-black d-block">Color</h3>
+                    <a href="#" class="d-flex color-item align-items-center">
+                      <span class="bg-danger color d-inline-block rounded-circle
+                        mr-2"></span> <span class="text-black">Red (2,429)</span>
+                    </a>
+                    <a href="#" class="d-flex color-item align-items-center">
+                      <span class="bg-success color d-inline-block
+                        rounded-circle mr-2"></span> <span class="text-black">Green
+                        (2,298)</span>
+                    </a>
+                    <a href="#" class="d-flex color-item align-items-center">
+                      <span class="bg-info color d-inline-block rounded-circle
+                        mr-2"></span> <span class="text-black">Blue (1,075)</span>
+                    </a>
+                    <a href="#" class="d-flex color-item align-items-center">
+                      <span class="bg-primary color d-inline-block
+                        rounded-circle mr-2"></span> <span class="text-black">Purple
+                        (1,075)</span>
+                    </a>
+                  </div> -->
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="site-section site-blocks-2">
+                                  <div class="row justify-content-center
+                                    text-center mb-5">
+                                    <div class="col-md-7 site-section-heading
+                                      pt-4">
+                                      <h2>Categories</h2>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-4
+                                      mb-lg-0"
+                                      data-aos="fade" data-aos-delay="">
+                                      <a class="block-2-item" href="#">
+                                        <figure class="image">
+                                          <img src="/assets/images/rods.jpg""
+                                            alt=""
+                                            class="img-fluid">
+                                        </figure>
+                                        <div class="text">
+                                          <span class="text-uppercase">Collections</span>
+                                          <h3>Lures</h3>
+                                        </div>
+                                      </a>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-5
+                                      mb-lg-0"
+                                      data-aos="fade" data-aos-delay="100">
+                                      <a class="block-2-item" href="#">
+                                        <figure class="image">
+                                          <img src="/assets/images/rods.jpg""
+                                            alt=""
+                                            class="img-fluid">
+                                        </figure>
+                                        <div class="text">
+                                          <span class="text-uppercase">Collections</span>
+                                          <h3>Reels</h3>
+                                        </div>
+                                      </a>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-5
+                                      mb-lg-0"
+                                      data-aos="fade" data-aos-delay="200">
+                                      <a class="block-2-item" href="#">
+                                        <figure class="image">
+                                          <img src="/assets/images/rods.jpg""
+                                            alt=""
+                                            class="img-fluid">
+                                        </figure>
+                                        <div class="text">
+                                          <span class="text-uppercase">Collections</span>
+                                          <h3>Rods</h3>
+                                        </div>
+                                      </a>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <footer class="site-footer border-top">
+                          <div class="container">
+                            <div class="row">
+                              <div class="col-lg-6 mb-5 mb-lg-0">
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <h3 class="footer-heading mb-4">Navigations</h3>
+                                  </div>
+                                  <div class="col-md-6 col-lg-4">
+                                    <ul class="list-unstyled">
+                                      <li><a href="#">Sell online</a></li>
+                                      <li><a href="#">Features</a></li>
+                                      <li><a href="#">Shopping cart</a></li>
+                                      <li><a href="#">Store builder</a></li>
+                                    </ul>
+                                  </div>
+                                  <div class="col-md-6 col-lg-4">
+                                    <ul class="list-unstyled">
+                                      <li><a href="#">Mobile commerce</a></li>
+                                      <li><a href="#">Dropshipping</a></li>
+                                      <li><a href="#">Website development</a></li>
+                                    </ul>
+                                  </div>
+                                  <div class="col-md-6 col-lg-4">
+                                    <ul class="list-unstyled">
+                                      <li><a href="#">Point of sale</a></li>
+                                      <li><a href="#">Hardware</a></li>
+                                      <li><a href="#">Software</a></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                                <h3 class="footer-heading mb-4">Promo</h3>
+                                <a href="#" class="block-6">
+                                  <img src="/assets/images/hero_1.jpg"
+                                    alt="Image placeholder"
+                                    class="img-fluid rounded mb-4">
+                                  <h3 class="font-weight-light mb-0">Finding
+                                    Your Perfect Shoes</h3>
+                                  <p>Promo from nuary 15 &mdash; 25, 2019</p>
+                                </a>
+                              </div>
+                              <div class="col-md-6 col-lg-3">
+                                <div class="block-5 mb-5">
+                                  <h3 class="footer-heading mb-4">Contact Info</h3>
+                                  <ul class="list-unstyled">
+                                    <li class="address">203 Fake St. Mountain
+                                      View, San
+                                      Francisco, California, USA</li>
+                                    <li class="phone"><a
+                                        href="tel://23923929210">+2 392 3929
+                                        210</a></li>
+                                    <li class="email">emailaddress@domain.com</li>
+                                  </ul>
+                                </div>
+
+                                <div class="block-7">
+                                  <form action="#" method="post">
+                                    <label for="email_subscribe"
+                                      class="footer-heading">Subscribe</label>
+                                    <div class="form-group">
+                                      <input type="text" class="form-control
+                                        py-4"
+                                        id="email_subscribe"
+                                        placeholder="Email">
+                                      <input type="submit" class="btn btn-sm
+                                        btn-primary"
+                                        value="Send">
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row pt-5 mt-5 text-center">
+                              <div class="col-md-12">
+                                <p>
+                                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                  Copyright &copy;<script data-cfasync="false"
+                                    src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script>
+                                  All rights reserved | This template is made
+                                  with <i
+                                    class="icon-heart" aria-hidden="true"></i>
+                                  by <a
+                                    href="https://colorlib.com" target="_blank"
+                                    class="text-primary">Colorlib</a>
+                                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </p>
+                              </div>
+
+                            </div>
+                          </div>
+                        </footer>
+                      </div>
+
+                      <script>
+  function filter(){
+  const checkboxes = document.getElementsByName("category");
+  const price = document.getElementsByName("filterprice");
+  const checkedValues = [];
+
+for (let i = 0; i < checkboxes.length; i++) {
+    // console.log(checkboxes.length);
+    if (checkboxes[i].checked) {
+      checkedValues.push(checkboxes[i].value);
+    } else {
+      const index = checkedValues.indexOf(checkboxes[i].value);
+      if (index !== -1) {
+        checkedValues.splice(index, 1);
+      }
+    }
+  }
+  let p
+  for(let i = 0;i < price.length; i++) {
+    if (price[i].checked) {
+      p = price[i].value;
+    }
+  }
+
+
+$.ajax({
+      url: "/shop/update",
+      type: "POST",
+      data: { categoryfilter: checkedValues,price: p},
+      success: function (data) {
+        console.log(data);
+        product = data.product;
+        const myElement = document.getElementById('filtered');
+if (product.length>0) {
+  filtered.innerHTML = `${product.map(p => `
+    <div class="col-sm-6 col-lg-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <img src="/uploads/${p.images[0]}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <div class="clearfix mb-3">
+            <span class="float-start badge rounded-pill bg-success">\₹${p.price}</span>
+          </div>
+          <h5 class="card-title">${p.name}</h5>
+          <div class="d-grid gap-2 my-4">
+            <a href="/shop-single?id=${p._id}" class="btn btn-warning">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('')}`;
+} else {
+  filtered.innerHTML = '<p>No products found.</p>';
+}
+
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.log(textStatus, errorThrown);
+      },
+    });
+  }
+</script>
+
+<script>
+  function wishlist(productId){
+      console.log(productId);
+      $.ajax({
+      url: "/wishlist/add",
+      type: "POST",
+      data: {productId:productId},
+      success: function (data) {
+        console.log(data);
+        Swal.fire({
+        icon: 'success',
+        title: 'Added to Wishlist',
+        showConfirmButton: false,
+        timer: 800,
+        customClass: {
+        popup: 'my-popup-class'
+  }
+      });
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.log(textStatus, errorThrown);
+      },
+      })
+  }
+
+//   const wishlistIcon = document.querySelector('.wishlist-icon');
+// wishlistIcon.addEventListener('click', function() {
+//   console.log("sanker");
+//   wishlistIcon.classList.toggle('filled');
+// });
+</script>
+
+                      <%- include ('../layouts/footer.ejs') %>

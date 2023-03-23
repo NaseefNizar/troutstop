@@ -1,0 +1,105 @@
+<%- include("../layouts/header.ejs") %>
+
+
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+
+              <h2 class="fw-bold mb-2 text-uppercase">Admin Login</h2>
+              <p class="text-white-50 mb-5">Please enter your login and password!</p>
+              
+              <form action="/admin" method="post" onsubmit="return validate()">
+                <!-- <h3
+                  class="fw-normal mb-3 pb-3"
+                  style="letter-spacing: 1px; margin-left: 7vw"
+                >
+                  Admin Login
+                </h3> -->
+    
+                <div class="form-outline mb-4">
+                  <input
+                  onkeyup="validateEmail()"
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="form-control form-control-lg"
+                  />
+                  <label class="form-label">Email address</label>
+                  <p id="errEmail" style="color: red;height:15px;"></p>
+                </div>
+    
+                <div class="form-outline mb-4">
+                  <input
+                  onkeyup="validatePass()"
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-control form-control-lg"
+                  />
+                  <p id="errPass"style="color: red;height:15px;"></p>
+                  <label class="form-label">Password</label>
+                </div>
+    
+                <div class="pt-1 mb-4">
+                  <button type="submit" class="btn btn-info btn-lg btn-block" onclick="validateEmail(),validatePass()">
+                    Login
+                  </button>
+                </div>
+                <% if(typeof message !== 'undefined'){%>
+    
+                <h4><%= message %></h4>
+    
+                <%}%>
+              </form>
+            
+            
+           
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+function validateEmail() {
+  var email = document.getElementById("email").value;
+  if (/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/.test(email)==false ) {
+    document.getElementById("errEmail").innerHTML ="Please Enter valid Email";
+    return false;
+  }
+  else
+    document.getElementById("errEmail").innerHTML = "";
+    return true;
+}  
+
+function validate() {
+    if(validateEmail() && validatePass()){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+function validatePass() {
+  var password = document.getElementById("password").value;
+  if (password.length < 6) { 
+    document.getElementById("errPass").innerHTML = "Please Enter More Than 6 Characters";
+    return false;
+  }
+  else{
+    document.getElementById("errPass").innerHTML = "";
+    return true;
+  }
+}
+
+</script>
+
+
+<%- include("../layouts/footer.ejs") %>
