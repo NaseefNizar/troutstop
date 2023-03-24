@@ -302,7 +302,7 @@ const loadProduct = async(req,res) => {
       });   
       const productData = await product.save();
       const category = await Category.find({})
-      if (productData) {
+      if (productData) {   
         res.render('addProduct', {category:category,message: "Product addded succesfully" })
     }
     else {
