@@ -40,9 +40,9 @@
 					    <h1 id="FName" style="color: red;"></h1>
 						<div><input type="text" id="lname" placeholder="Last Name" name="lastname"   onkeyup = "lnameValidate()"></div>
 						<h1 id="LName" style="color: red;"></h1>
-						<div><input type="text" id="password" placeholder="Password" name="password" onkeyup="passwordValidate()"></div>
+						<div><input type="password" id="password" placeholder="Password" name="password" onkeyup="passwordValidate()"></div>
 		    			<h1 id="Password" style="color: red;"></h1>
-						<div><input type="text" id="password2" placeholder="Confirm password" name="password2" onkeyup="passwordValidate2()"></div>
+						<div><input type="password" id="password2" placeholder="Confirm password" name="password2" onkeyup="passwordValidate2()"></div>
 						<h1 id="Password2" style="color: red;"></h1>
 					</div>
 		    	  <div class="col_1_of_2 span_1_of_2">	
@@ -57,12 +57,11 @@
 				  <h1 id="Zipcode" style="color: red;"></h1>
 				  <div>
 		          </div>
-		          	<!-- <input type="text" value="" class="code" name="countrycode"> - <input type="text" value="" class="number" name="phonenumber">
-		          		<p class="code">Country Code + Phone Number</p> -->
+
 						  <input type="text" id= "phonenumber" placeholder="Mobile number" name="phonenumber"  onkeyup="numberValidate()">
 						  <h1 id="Phonenumber" style="color: red;"></h1>
 						</div>
-		      <button type="submit" value="submit" class="grey" onclick="fnameValidate() ,lnameValidate(), emailValidate(), numberValidate(), passwordValidate(),passwordValidate2(),zipValidate()">Submit</button>
+		      <button type="submit" value="submit" class="grey" onclick="validate()">Submit</button>
 		    <p class="terms">By clicking 'Create Account' you agree to the <a href="#">Terms &amp; Conditions</a>.</p>
 		    <div class="clear"></div>
 		    </form>

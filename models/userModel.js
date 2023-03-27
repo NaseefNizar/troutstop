@@ -91,7 +91,7 @@ userSchema.methods.addToCart = function (product) {
         qty:1,price:product.price})
     }
     cart.totalPrice += product.price
-    console.log("User in schema:",this);
+    // console.log("User in schema:",this);
     return this.save()
 }
 
@@ -102,7 +102,7 @@ userSchema.methods.removefromCart = async function (productId){
         const prod = await Product.findById(productId)
         cart.totalPrice -= prod.price * cart.item[isExisting].qty
         cart.item.splice(isExisting,1)
-        console.log("User in schema:",this);
+        // console.log("User in schema:",this);
         return this.save()
     }
 }
@@ -115,7 +115,7 @@ userSchema.methods.updateCart = async function (id,qty){
     const index = cart.item.findIndex(objInItems => {
         return new String(objInItems.productId).trim() == new String(product._id).trim()
     })
-    console.log(id);
+    // console.log(id);
     if(qty >cart.item[index].qty ){
         cart.item[index].qty +=1
         cart.totalPrice += product.price
@@ -124,7 +124,7 @@ userSchema.methods.updateCart = async function (id,qty){
         cart.item[index].qty -=1
         cart.totalPrice -= product.price  
     } 
-    console.log(cart.totalPrice);
+    // console.log(cart.totalPrice);
      this.save()
      return cart.totalPrice
 }

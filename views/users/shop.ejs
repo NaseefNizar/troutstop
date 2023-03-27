@@ -15,7 +15,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <style>
   .my-popup-class{
-    z-index: 9999;
+    z-index: 1;
     
   }
   /* .wishlist-icon {
@@ -90,7 +90,7 @@
         </div>
       </nav>
     </header> -->
-    <header class="site-navbar" role="banner">
+    <header class="site-navbar" role="banner" style="z-index: 0;">
       <div class="site-navbar-top">
         <div class="container">
           <div class="row align-items-center">
@@ -240,7 +240,9 @@
                          
                             <div class="d-grid gap-2 my-4 " style="display: flex;justify-content:space-between ;align-items: center;">
                               <!-- <a href="/shop-single?id=<%=product[i]._id%>" class="btn btn-warning" style="z-index: 1">Add to Cart</a>  -->
-                              <a href="#" class="btn btn-primary btn-sm style"style="z-index: 1;">Buy Now</a>
+                              <!-- <a href="#" class="btn btn-primary btn-sm style" id="buynow" style="z-index: 1; " onclick="addToCart('<%=product[i]._id%>')">Buy Now</a> -->
+                              <button class="buy-now btn btn-sm btn-primary" id="buynow" onclick="addToCart('<%=product[i]._id%>')" style="z-index: 0;">Add To Cart</button>
+
                               <!-- <i class="fa-regular fa-heart" style="width:1.5px" onclick="wishlist('<%=product[i]._id%>')"></i> -->
                               <span class="wishlist-icon" style="font-size: 1.5em;" ><i class="fa-regular fa-heart" onclick="wishlist('<%=product[i]._id%>')" ></i></span>
                             </div>
@@ -518,11 +520,13 @@
                         </footer>
                       </div>
 
-                      <script>
+<script>
+
   function filter(){
   const checkboxes = document.getElementsByName("category");
   const price = document.getElementsByName("filterprice");
   const checkedValues = [];
+
 
 for (let i = 0; i < checkboxes.length; i++) {
     // console.log(checkboxes.length);
@@ -535,6 +539,7 @@ for (let i = 0; i < checkboxes.length; i++) {
       }
     }
   }
+  console.log(checkedValues);
   let p
   for(let i = 0;i < price.length; i++) {
     if (price[i].checked) {
@@ -548,26 +553,27 @@ $.ajax({
       type: "POST",
       data: { categoryfilter: checkedValues,price: p},
       success: function (data) {
-        console.log(data);
+        // console.log(data);
         product = data.product;
         const myElement = document.getElementById('filtered');
 if (product.length>0) {
-  filtered.innerHTML = `${product.map(p => `
-    <div class="col-sm-6 col-lg-4 mb-4">
-      <div class="card h-100 shadow-sm">
-        <img src="/uploads/${p.images[0]}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <div class="clearfix mb-3">
-            <span class="float-start badge rounded-pill bg-success">\₹${p.price}</span>
-          </div>
-          <h5 class="card-title">${p.name}</h5>
-          <div class="d-grid gap-2 my-4">
-            <a href="/shop-single?id=${p._id}" class="btn btn-warning">Add to Cart</a>
-          </div>
+  filtered.innerHTML =  `${product.map((productItem) => `
+  <div class="col-sm-6 col-lg-4 mb-4">
+    <div class="card h-100 shadow-sm">
+      <img src="/uploads/${productItem.images[0]}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <div class="clearfix mb-3">
+          <a href="/shop-single?id=${productItem._id}"><h5>${productItem.name}</h5></a>
+        </div>
+        <span class="text-black">₹${productItem.price}</span>
+        <div class="d-grid gap-2 my-4" style="display: flex;justify-content:space-between ;align-items: center;">
+          <a href="#" class="btn btn-primary btn-sm style" style="z-index: 1;">Buy Now</a>
+          <span class="wishlist-icon" style="font-size: 1.5em;"><i class="fa-regular fa-heart" onclick="wishlist('${productItem._id}')"></i></span>
         </div>
       </div>
     </div>
-  `).join('')}`;
+  </div>
+`).join('')}`
 } else {
   filtered.innerHTML = '<p>No products found.</p>';
 }
@@ -582,13 +588,13 @@ if (product.length>0) {
 
 <script>
   function wishlist(productId){
-      console.log(productId);
       $.ajax({
       url: "/wishlist/add",
       type: "POST",
       data: {productId:productId},
       success: function (data) {
         console.log(data);
+        if(data.status){
         Swal.fire({
         icon: 'success',
         title: 'Added to Wishlist',
@@ -598,12 +604,97 @@ if (product.length>0) {
         popup: 'my-popup-class'
   }
       });
+    } else{
+      Swal.fire({
+        icon: 'success',
+        title: 'Login first!!!',
+        showConfirmButton: false,
+        timer: 800,
+        customClass: {
+        popup: 'my-popup-class'
+  }
+      });
+    }
       },
       error: function (jqXHR, textStatus, errorThrown) {
         console.log(textStatus, errorThrown);
       },
       })
   }
+
+
+
+// function addToCart(id) {
+//   console.log(id);
+//   $.ajax({
+//       url: "/addToCart",
+//       type: "POST",
+//       data: {productId:id},
+//       success: function (data) {
+//         // console.log(data);
+//         if(data.status){
+//         Swal.fire({
+//         icon: 'success',
+//         title: 'Added to Cart',
+//         showConfirmButton: false,
+//         timer: 800,
+//         customClass: {
+//         popup: 'my-popup-class'
+//         }
+//       });
+//      } else{
+//         Swal.fire({
+//         icon: 'success',
+//         title: 'Login',
+//         showConfirmButton: false,
+//         timer: 800,
+//         customClass: {
+//         popup: 'my-popup-class'
+//         }
+//       });
+//       }
+//     },
+//       error: function (jqXHR, textStatus, errorThrown) {
+//         console.log(textStatus, errorThrown);
+//       },
+//       })
+// };
+function addToCart(id) {
+console.log(id);
+fetch("/addToCart", {
+method: "POST",
+body: JSON.stringify({productId:id}),
+headers: {
+"Content-Type": "application/json"
+}
+})
+.then(response => response.json())
+.then(data => {
+if(data.status){
+Swal.fire({
+icon: 'success',
+title: 'Added to Cart',
+showConfirmButton: false,
+timer: 800,
+customClass: {
+popup: 'my-popup-class'
+}
+});
+} else {
+Swal.fire({
+icon: 'success',
+title: 'Login',
+showConfirmButton: false,
+timer: 800,
+customClass: {
+popup: 'my-popup-class'
+}
+});
+}
+})
+.catch(error => console.log(error));
+};
+
 
 //   const wishlistIcon = document.querySelector('.wishlist-icon');
 // wishlistIcon.addEventListener('click', function() {

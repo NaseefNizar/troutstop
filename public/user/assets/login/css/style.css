@@ -988,7 +988,7 @@ p#login-form-remember{
 	float:left;
 }
 fieldset.input input[type="submit"] {
-	background:#555;
+	background:#7971ea;
 	border: none;
 	color: #FFF;
 	padding:10px 20px;
@@ -1006,7 +1006,7 @@ fieldset.input input[type="submit"]:hover, .button1 input[type="submit"]:hover{
 	margin-top: 6%;
 }
 .button1 input[type="submit"] {
-	background:#555;
+	background:#7971ea;
 	border: none;
 	color: #FFF;
 	padding:10px 20px;

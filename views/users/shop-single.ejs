@@ -127,7 +127,8 @@
             </div>
 
             </div>
-            <p><a href="/addToCart?id=<%=product._id%>" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
+            <!-- <a href="/addToCart?id=<%=product._id%>" class="buy-now btn btn-sm btn-primary">Add To Cart</a> -->
+            <button class="buy-now btn btn-sm btn-primary" id="buynow" onclick="addToCart('<%=product._id%>')" style="z-index: 0;">Add To Cart</button>
             <% if(typeof message !=='undefined' ){%>
               <p style="color:green">
                   <%= message %>
@@ -290,5 +291,44 @@
       </div>
     </footer>
   </div>
+
+
+  <script>
+    function addToCart(id) {
+  console.log(id);
+  $.ajax({
+      url: "/addToCart",
+      type: "POST",
+      data: {productId:id},
+      success: function (data) {
+        // console.log(data);
+        if(data.status){
+        Swal.fire({
+        icon: 'success',
+        title: 'Added to Cart',
+        showConfirmButton: false,
+        timer: 800,
+        customClass: {
+        popup: 'my-popup-class'
+        }
+      });
+     } else{
+        Swal.fire({
+        icon: 'success',
+        title: 'Login',
+        showConfirmButton: false,
+        timer: 800,
+        customClass: {
+        popup: 'my-popup-class'
+        }
+      });
+      }
+    },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.log(textStatus, errorThrown);
+      },
+      })
+};
+  </script>
 
   <%- include ('../layouts/footer.ejs') %>

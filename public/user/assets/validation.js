@@ -1,6 +1,4 @@
 function fnameValidate(){
- 
-
   let name=document.getElementById("fname").value;
   console.log(name);
    if(name ==""){
@@ -11,9 +9,10 @@ function fnameValidate(){
         return true
      }
 }
-function lnameValidate(){
- 
 
+
+
+function lnameValidate(){
   let name=document.getElementById("lname").value;
   console.log(name);
    if(name ==""){
@@ -28,7 +27,7 @@ function emailValidate(){
   let emailId=document.getElementById("email").value;
   console.log("emailId"+emailId);
   if(/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/.test(emailId)==false){
-    document.getElementById("Email").innerHTML="Please enter valid email ";
+    document.getElementById("Email").innerHTML="Enter valid email ";
     return false;
   }else{
     document.getElementById("Email").innerHTML="";
@@ -56,18 +55,19 @@ function zipValidate(){
     return false
    }
   else if(number.length != 6){
-    document.getElementById("Zipcode").innerHTML="please enter valid zip";
+    document.getElementById("Zipcode").innerHTML="enter valid zip";
     return false
      }else{
       document.getElementById("Zipcode").innerHTML="";
         return true
      }
 }
-let password=document.getElementById("password").value; 
+let password; 
 function passwordValidate(){
   password=document.getElementById("password").value; 
-   if(password.length <8){
-    document.getElementById("Password").innerHTML="please enter minimum 8 digits";
+  console.log(password);
+   if(password.length <6){
+    document.getElementById("Password").innerHTML="Enter valid password";
     return false
      }else{
       document.getElementById("Password").innerHTML="";
@@ -85,6 +85,15 @@ function passwordValidate2(){
       return true
      }
     }
+
+function loginValidate(){
+      if(emailValidate()&&passwordValidate()){
+        return true
+      }else{
+        return false
+      }
+    }
+
 function validate(){
   if(fnameValidate()&&lnameValidate()&&emailValidate()&&numberValidate()&&zipValidate()&&passwordValidate()&&passwordValidate2()){
     return true
@@ -92,3 +101,7 @@ function validate(){
     return false
   }
 }
+
+
+
+

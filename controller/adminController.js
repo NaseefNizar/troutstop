@@ -5,7 +5,7 @@ const Order = require('../models/orderSchema');
 const Banner = require('../models/bannerSchema');
 const Coupon = require('../models/couponSchema');
 const bcrypt = require("bcrypt");
-const Swal = require('sweetalert2');
+
 
 const adminLogin = async (req, res) => {
   try { 
