@@ -567,7 +567,7 @@ if (product.length>0) {
         </div>
         <span class="text-black">₹${productItem.price}</span>
         <div class="d-grid gap-2 my-4" style="display: flex;justify-content:space-between ;align-items: center;">
-          <a href="#" class="btn btn-primary btn-sm style" style="z-index: 1;">Buy Now</a>
+          <button class="buy-now btn btn-sm btn-primary" id="buynow" onclick="addToCart('<%=product[i]._id%>')" style="z-index: 0;">Add To Cart</button>
           <span class="wishlist-icon" style="font-size: 1.5em;"><i class="fa-regular fa-heart" onclick="wishlist('${productItem._id}')"></i></span>
         </div>
       </div>
