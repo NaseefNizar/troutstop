@@ -259,7 +259,7 @@
                                                     <%= coupon[i-1].max_discount %>
                                                 </td>
                                                 <td>
-                                                    <%= coupon[i-1].expiry_date%>
+                                                    <%= coupon[i-1].expiry_date.toDateString() + " at " + coupon[i-1].expiry_date.getHours() + ":" + coupon[i-1].expiry_date.getMinutes() + ":" + coupon[i-1].expiry_date.getSeconds();%>
                                                 </td>
                                                 <td>
                                                     <button class="btn-outline-primary"><a data-toggle="modal"href="#editcoupon" 

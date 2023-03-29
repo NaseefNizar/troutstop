@@ -19,13 +19,14 @@
         padding: 0;
         box-sizing: border-box;
         font-family: "Poppins", sans-serif;
+        
       }
       body {
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        background: #ffffff;
+        background-color:#ffffff
       }
       .container {
         position: relative;
@@ -69,7 +70,7 @@
         width: 15px;
         height: 15px;
         border-radius: 50%;
-        background: #fff;
+        background-color: #fff;
         opacity: 0.9;
       }
       .container .drop .content {
@@ -196,12 +197,17 @@
       .btn:hover {
         border-radius: 50%;
       }
-    </style>
+      @media(max-width:900px){
+        .drop{
+          max-width:380px;
 
+        }
+      }
+    </style>
+  
     <div class="container">
-		
       <div class="drop">
-        <div class="content">
+        <div class="content bg-warning">
 			<a href="/"
           ><img
             style="width: 100px; height: 100px"
@@ -261,6 +267,8 @@
       <a href="/forgetpassword" class="btn">Forgot Password</a>
       <a href="/signup" class="btn signup">Signup</a>
     </div>
+  
+    
 
 
 

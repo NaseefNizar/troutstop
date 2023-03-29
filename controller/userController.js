@@ -230,6 +230,37 @@ const shop = async (req, res) => {
   }
 };
 
+const search = async (req, res) => {
+  try {
+    if (req.session.user_id) {
+      check = true;
+    } else {
+      check = false;
+    }
+    const search = req.body.search
+    console.log(search);
+    const category = await Category.find({ is_available: 1 });
+    // const product = await Product.find({ $or: [{ 'name': { $regex: '' + search + ".*" } }, { 'category': { $regex: ".*" + search + ".*" } }] });
+    //  const product = await Product.find({$or:[
+    //    {'name': new RegExp('^' + search + '.*') },{ 'category': new RegExp('^' + search + '.*')  }]}).populate({
+    //     path: 'category',
+    //     match: { 'name': new RegExp('^' + search + '.*') }
+    //   });
+    const product = await Product.find(
+
+    {'name': new RegExp('^' + search + '.*') },
+
+  
+)
+
+
+       console.log(product);
+    res.render("shop", { product: product, category: category, user: check });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 const shopUpdate = async (req, res) => {
   try {
     const categoryFilter = req.body.categoryfilter;
@@ -333,6 +364,27 @@ const editAddress = async (req, res) => {
   }
 };
 
+const editDetail = async (req, res) => {
+  try {
+    // const id = req.session.user_id;
+    const userData = await User.findByIdAndUpdate(
+      { _id: req.session.user_id},
+      {
+        $set: {
+          firstname: req.body.firstname,
+          lastname: req.body.lastname,
+          email: req.body.email,
+          gender: req.body.gender,
+          phonenumber: req.body.mobilenumber,
+        },
+      }
+    );
+    res.redirect("/userprofile");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const deleteAddress = async (req, res) => {
   try {
     const id = req.query.id;
@@ -418,9 +470,11 @@ module.exports = {
   shop,
   shopUpdate,
   singleProduct,
+  search,
   saveAddress,
   editAddress,
   deleteAddress,
+  editDetail,
   applyCoupon,
   userLogout,
 };

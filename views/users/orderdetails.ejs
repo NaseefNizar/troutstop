@@ -61,10 +61,20 @@ a {
                   <span class="me-3"><%=orderData.orderedAt%></span>
                   <!-- <span class="me-3">#16123222</span> -->
                   <!-- <span class="me-3">Visa -1234</span> -->
-                  <span class="badge rounded-pill bg-info"><%=orderData.status%></span>
+                  <% if ( orderData.status == 'CANCELLED') { %>
+                  <span class="badge rounded-pill bg-danger"><%=orderData.status%></span>
+                  <% } else { %>
+                  <span class="badge rounded-pill bg-success"><%=orderData.status%></span>
+                  <% } %>
                 </div>
                 <div class="d-flex">
+                  <% if ( orderData.status !== 'CANCELLED') { %>
                   <button class="btn btn-link p-0 me-3 d-none d-lg-block btn-icon-text"><i class="bi bi-download"></i> <span class="text"><a href="/cancelorder?id=<%=orderData._id%>">Cancel</a></span></button>
+                  <% }else if(orderData.status == 'DELIVERED') {%>
+                  <button class="btn btn-link p-0 me-3 d-none d-lg-block btn-icon-text"><i class="bi bi-download"></i> <span class="text"><a href="/cancelorder?id=<%=orderData._id%>">return</a></span></button>
+                  <% } else { %>
+                    
+                    <% } %>
                   <div class="dropdown">
                     <button class="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
                       <i class="bi bi-three-dots-vertical"></i>
@@ -94,6 +104,8 @@ a {
                         </div>
                       </div>
                     </td>
+                    <td>x</td>
+
                     <td><%=x.qty%></td>
                     <td class="text-end">₹ <%=x.price%></td>
                   </tr>
@@ -130,6 +142,7 @@ a {
                   </tr> -->
                   <tr class="fw-bold">
                     <td colspan="2">TOTAL</td>
+                    <td ></td>
                     <td class="text-end">₹ <%=orderData.products.totalPrice%></td>
                   </tr>
                 </tfoot>

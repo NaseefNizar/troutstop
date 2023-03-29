@@ -145,7 +145,7 @@ const cancelOrder = async (req, res) => {
                 }
             }
         }
-        res.render("orders", { order: orders });
+        res.redirect("/order");
     } catch (error) {
         console.log(error);
     }

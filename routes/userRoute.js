@@ -45,11 +45,12 @@ user_route.get('/resendotp',userController.resendOtp);
 user_route.get('/userprofile',auth.isLogin,userController.userProfile);
 user_route.post('/editaddress',auth.isLogin,userController.editAddress);
 user_route.get('/deleteaddress',auth.isLogin,userController.deleteAddress);
-
+user_route.post('/editdetail',auth.isLogin,userController.editDetail);
 
 user_route.get('/shop',userController.shop);
 user_route.get('/shop-single',userController.singleProduct);
 user_route.post('/shop/update',userController.shopUpdate);
+user_route.post('/search',userController.search)
 
 user_route.post('/wishlist/add',wishlistController.addWishlist)
 user_route.get('/wishlist',auth.isLogin,wishlistController.showWishlist);
