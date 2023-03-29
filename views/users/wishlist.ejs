@@ -1,5 +1,10 @@
 <%- include('../layouts/header.ejs')%>
 
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
   <div class="site-wrap">
     <!-- <header class="site-navbar" role="banner">
     <div class="site-navbar-top">
@@ -226,7 +231,11 @@
 
                             <div>
                               <a href="/deletewishlistitem?id=<%= key.productId._id%>"
-                                class="btn btn-primary btn-sm">X</a </div>
+                                class="btn btn-primary btn-sm" style="z-index: 0;">X</a >
+                            </div>
+                            <div>
+                              <button class="buy-now btn btn-sm btn-primary" type="button" id="buynow" onclick="addToCart('<%=key.productId._id%>')" style="z-index: 0;">Add To Cart</button>
+                            </div>
 
                             </div>
                           </div>
@@ -424,31 +433,7 @@
     }
 
     function updateCartItem(itemId, newQuantity) {
-      //   fetch('/cart/update', {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/json'
-      //     },
-      //     body: JSON.stringify({
-      //       itemId: itemId,
-      //       newQuantity: newQuantity
-      //     })
-      //   })
-      //   .then(response => {
-      //     if (!response.ok) {
-      //       throw new Error('Network response was not ok');
-      //     }
-
-      //     return response.json();
-      //   })
-      //   .then(data => {
-      //     // console.log(data.price);
-      // document.getElementById('price').innerHTML = data.price
-      // document.getElementById('totalprice').innerHTML = data.totalPrice
-
-      //   })
-      //   .catch
-      // }
+     
 
       $.ajax({
         url: "/cart/update",
@@ -465,6 +450,45 @@
         },
       });
     }
+
+
+    function addToCart(id) {
+console.log(id);
+fetch("/addToCart", {
+method: "POST",
+body: JSON.stringify({productId:id}),
+headers: {
+"Content-Type": "application/json"
+}
+})
+.then(response => response.json())
+.then(data => {
+if(data.status){
+Swal.fire({
+icon: 'success',
+title: 'Added to Cart',
+showConfirmButton: false,
+timer: 800,
+customClass: {
+popup: 'my-popup-class'
+}
+});
+} else {
+Swal.fire({
+icon: 'success',
+title: 'Login',
+showConfirmButton: false,
+timer: 800,
+customClass: {
+popup: 'my-popup-class'
+}
+});
+}
+})
+.catch(error => console.log(error));
+};
+
+
   </script>
 
   <%- include('../layouts/footer.ejs')%>

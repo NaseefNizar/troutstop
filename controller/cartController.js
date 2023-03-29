@@ -19,10 +19,7 @@ const addToCart = async (req, res) => {
       } else {
         check = false;
         res.json({ status: false })
-  
       }
-  
-  
     } catch (error) {
       console.log(error);
     }
