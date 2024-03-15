@@ -7,8 +7,7 @@
     <title>Troutstop</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   </head>
 
   <body>
@@ -204,28 +203,25 @@
         }
       }
     </style>
-  
+
     <div class="container">
       <div class="drop">
         <div class="content bg-warning">
-			<a href="/"
-          ><img
-            style="width: 100px; height: 100px"
-            src="/assets/images/troutstoplogo.png"
-            alt=""
-        /></a>
-			<% if(typeof message !== 'undefined'){%>
-				<span style="color: red; text-align: center"><%= message %></span>
-				<%}%>
+          <a href="/"><img
+              style="width: 100px; height: 100px"
+              src="/assets/images/troutstoplogo.png"
+              alt /></a>
+          <% if(typeof message !== 'undefined'){%>
+          <span style="color: red; text-align: center"><%= message %></span>
+          <%}%>
           <!-- <h2 class="animate__heartBeat">TroutStop</h2> -->
           <form
             action="/login"
             method="post"
             name="login"
             id="login-form"
-            onsubmit="return (loginValidate())"
-          >
-		  <span id="Email" style="color: red;"></span>
+            onsubmit="return (loginValidate())">
+            <span id="Email" style="color: red;"></span>
 
             <div class="input-box">
               <input
@@ -235,44 +231,42 @@
                 class="inputbox"
                 size="18"
                 autocomplete="off"
-				placeholder="Email"
-                onkeyup="emailValidate()"
-              />
+                placeholder="Email"
+                onkeyup="emailValidate()" />
             </div>
-			<span id="Password" style="color: red;"></span>
+            <span id="Password" style="color: red;"></span>
 
             <div class="input-box">
-				<input
-				id="password"
-				type="password"
-				name="password"
-				class="inputbox"
-				size="18"
-				autocomplete="off"
-				placeholder="Password"
-				onkeyup="passwordValidate()"
-			  />
+              <input
+                id="password"
+                type="password"
+                name="password"
+                class="inputbox"
+                size="18"
+                autocomplete="off"
+                placeholder="Password"
+                onkeyup="passwordValidate()" />
             </div>
             <div class="input-box">
-				<input
-				type="submit"
-				name="Submit"
-				value="Login"
-				onclick="loginValidate()"
-			  />
-            </div>
-          </form>
+              <input
+                type="submit"
+                name="Submit"
+                value="Login"
+                onclick="loginValidate()" />
+              </div>
+            </form>
+            <button><a href="/admin" style="text-decoration: none;">Admin Login</a></button>
+          <div style="border: 1px solid red;padding:5px">
+            <p><strong>Demo user</strong></p>
+            <p>Username : testuser@gmail.com </p>
+            <p>Password : @zZ123456789 </p>
+          </div>
         </div>
       </div>
       <a href="/forgetpassword" class="btn">Forgot Password</a>
       <a href="/signup" class="btn signup">Signup</a>
+
     </div>
-  
-    
-
-
-
-
 
     <script src="/assets/validation.js"></script>
 

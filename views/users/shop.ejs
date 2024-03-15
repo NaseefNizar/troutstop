@@ -624,41 +624,7 @@ if (product.length>0) {
 
 
 
-// function addToCart(id) {
-//   console.log(id);
-//   $.ajax({
-//       url: "/addToCart",
-//       type: "POST",
-//       data: {productId:id},
-//       success: function (data) {
-//         // console.log(data);
-//         if(data.status){
-//         Swal.fire({
-//         icon: 'success',
-//         title: 'Added to Cart',
-//         showConfirmButton: false,
-//         timer: 800,
-//         customClass: {
-//         popup: 'my-popup-class'
-//         }
-//       });
-//      } else{
-//         Swal.fire({
-//         icon: 'success',
-//         title: 'Login',
-//         showConfirmButton: false,
-//         timer: 800,
-//         customClass: {
-//         popup: 'my-popup-class'
-//         }
-//       });
-//       }
-//     },
-//       error: function (jqXHR, textStatus, errorThrown) {
-//         console.log(textStatus, errorThrown);
-//       },
-//       })
-// };
+
 function addToCart(id) {
 console.log(id);
 fetch("/addToCart", {
@@ -670,6 +636,7 @@ headers: {
 })
 .then(response => response.json())
 .then(data => {
+  console.log(data);
 if(data.status){
 Swal.fire({
 icon: 'success',
